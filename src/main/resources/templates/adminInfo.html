@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>SportsPortal HomePage</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css"
+	rel="stylesheet" />
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+		<a class="pull-left" href="/adminStatus"> <img src="images/logo.png"
+			alt="logo" style="width: 40px;">
+		</a> <a class="navbar-brand" href="/adminStatus">SportsPortal</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a class="nav-link" href="/userlist">View
+						Users <span class="sr-only">(current)</span>
+				</a></li>
+
+			</ul>
+
+
+
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/logout"><span
+						class="glyphicon glyphicon-user"></span> Logout </a></li>
+			</ul>
+
+		</div>
+	</nav>
+	<p>Your System Users are as follows</p>
+
+	<div class="container">
+		<table class="table table-bordered">
+			 <thead class="thead-dark">
+				<tr>
+					<th scope="col">Users</th>
+					<th scope="col">Block</th>
+
+				</tr>
+			</thead>
+
+
+			<tr th:each="teamDetail : ${userl}">
+				<td th:text="${teamDetail.username}"></td>
+
+				<td>
+					<form action="/block" method="post">
+
+
+						<input type="hidden" th:value="${teamDetail.id}" th:name="id" />
+
+						<button type="submit" class="btn btn-primary">Block</button>
+
+					</form>
+
+				</td>
+
+
+			</tr>
+		</table>
+	</div>
+
+
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Assignment 2- NBA</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css"
+	rel="stylesheet" />
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+  <a class="pull-left" href="/">
+  <img src="images/logo.png" alt="logo" style="width:40px;">
+  </a>
+  
+ <a class="navbar-brand" href="/">SportsPortal</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item ">
+        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="/favoriteteam">Favorite Team</a>
+      </li>
+      
+      <li class="nav-item ">
+        <a class="nav-link" href="/teams">View Teams</a>
+      </li>
+      
+      
+        <li class="nav-item ">
+        <a class="nav-link" href="/score">View Scores</a>
+      	</li>
+      	   
+     
+      	<li class="nav-item ">
+        <a class="nav-link" href="/rank">View Rankings</a>
+      	</li>
+      	
+      
+      </ul>
+      
+       <ul class="nav navbar-nav navbar-right">
+	<li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Logout </a></li>
+    </ul>
+      </div>
+      </nav>
+
+
+	 <p th:text="'Hello, ' + ${name} + ' Please Select Your Favorite Team'" />
+
+<form action="/home" method="post">
+
+  <div class="col-lg-3" th:object="${favTeamDetails}">
+    <select class="form-control" id="testOrder" name="testOrder" multiple="multiple">
+        <option value=""></option>
+        <option th:each="test : ${favTeamDetails}"
+                th:value="${test.name}+':'+${test.abb}+':'+${test.id}"
+                th:text="${test.abb}+' : '+${test.name}">
+          </option>
+    </select>
+	</div>
+		 <input type="submit" value="submit"/>
+		
+		
+	</form>
+		
+
+
+
+	<script type="text/javascript">
+		$(".form-control").select2();
+	</script>
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+
+</body>
+</html>

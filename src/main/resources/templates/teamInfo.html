@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Team Info</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+  <a class="pull-left" href="/">
+  <img src="images/logo.png" alt="logo" style="width:40px;">
+  </a>
+  
+ <a class="navbar-brand" href="/">SportsPortal</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item ">
+        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="/favoriteteam">Favorite Team</a>
+      </li>
+      
+      <li class="nav-item ">
+        <a class="nav-link" href="/teams">View Teams</a>
+      </li>
+      
+      
+        <li class="nav-item ">
+        <a class="nav-link" href="/score">View Scores</a>
+      	</li>
+      	   
+     
+      	<li class="nav-item ">
+        <a class="nav-link" href="/rank">View Rankings</a>
+      	</li>
+      	
+      
+      </ul>
+      
+       <ul class="nav navbar-nav navbar-right">
+	<li><a href="/logout"><span class="glyphicon glyphicon-user"></span> Logout </a></li>
+    </ul>
+      </div>
+      </nav>
+<div class="container">
+
+
+ <form action="/favadded" method="post">
+
+  <div class="col-lg-3" th:object="${teamProf}">
+
+    <input type="hidden" th:value="${teamProf.abb}" th:name="abb"/>
+      <input type="hidden" th:value="${teamProf.name}" th:name="name"/>
+     <input type="hidden" th:value="${teamProf.id}" th:name="id"/>
+     <button type="submit" class="btn btn-primary">Add to Favorite</button>
+	</div>
+	
+</form>
+<table class="table table-bordered">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+      <th scope="col">Away team</th>
+      <th scope="col">Win</th>
+      <th scope="col">Loss</th>
+    </tr>
+  </thead>
+    	<tr th:each="gameDetail,iterStat : ${gameDetails}" >
+     		<td th:text="${gameDetail.get('id')}"> </td>
+     		<td th:text="${gameDetail.get('date')}" >  </td>
+     		<td th:text="${gameDetail.get('time')}" >  </td>
+  			<td th:text="${gameDetail.get('awayTeam')}" >  </td>
+  			<td th:text="${gameDetail.get('wins')}" >  </td>
+  			<td th:text="${gameDetail.get('losses')}" >  </td>
+  		</tr>
+    </table>
+</div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</body>
+</html>
